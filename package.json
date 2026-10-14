@@ -1,0 +1,29 @@
+{
+  "name": "org-lib",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n tsc,test -c blue,green \"tsc -w --noEmit --pretty --preserveWatchOutput\" \"vitest --watch\"",
+    "test": "vitest run && tsc --noEmit --pretty",
+    "build": "tsc -p tsconfig.build.json",
+    "dev:playground": "tsx watch example/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
